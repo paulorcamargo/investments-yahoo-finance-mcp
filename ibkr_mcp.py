@@ -13,10 +13,8 @@ Requirements:
 import asyncio
 
 # Python 3.14 fix: create event loop before ib_insync/eventkit imports
-try:
-    asyncio.get_event_loop()
-except RuntimeError:
-    asyncio.set_event_loop(asyncio.new_event_loop())
+# (Python 3.14 removed implicit loop creation in get_event_loop)
+asyncio.set_event_loop(asyncio.new_event_loop())
 import json
 import logging
 import datetime

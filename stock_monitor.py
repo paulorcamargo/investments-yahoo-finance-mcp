@@ -80,6 +80,42 @@ WATCHLIST = {
     "AMZN":  ("NASDAQ", "america"),
     "GOOGL": ("NASDAQ", "america"),
     "AVGO":  ("NASDAQ", "america"),
+    # --- Oversold Quality (Screener Picks) ---
+    "NFLX":  ("NASDAQ", "america"),
+    "GE":    ("NYSE",   "america"),
+    "MA":    ("NASDAQ", "america"),
+    "MCD":   ("NYSE",   "america"),
+    "HD":    ("NYSE",   "america"),
+    "LOW":   ("NYSE",   "america"),
+    "MRK":   ("NYSE",   "america"),
+    "PFE":   ("NYSE",   "america"),
+    "CRM":   ("NYSE",   "america"),
+    "NKE":   ("NYSE",   "america"),
+    "DIS":   ("NYSE",   "america"),
+    # --- US Penny Stocks (High Risk) ---
+    "SOUN":  ("NASDAQ", "america"),
+    "GENI":  ("NYSE",   "america"),
+    "RDW":   ("NYSE",   "america"),
+    "QUBT":  ("NASDAQ", "america"),
+    "GRAB":  ("NASDAQ", "america"),
+    "SENS":  ("AMEX",   "america"),
+    "NTLA":  ("NASDAQ", "america"),
+    "ACHR":  ("NYSE",   "america"),
+    "NXE":   ("NYSE",   "america"),
+    "LCID":  ("NASDAQ", "america"),
+    "TLRY":  ("NASDAQ", "america"),
+    "AISP":  ("NASDAQ", "america"),
+    # --- TSX Penny Stocks (High Risk) ---
+    "OGI":   ("TSX",    "canada"),
+    "BTO":   ("TSX",    "canada"),
+    "URC":   ("TSX",    "canada"),
+    "WELL":  ("TSX",    "canada"),
+    "DML":   ("TSX",    "canada"),
+    "BIR":   ("TSX",    "canada"),
+    "GURU":  ("TSX",    "canada"),
+    "REAL":  ("TSX",    "canada"),
+    # --- Watching for Pullback ---
+    "NOK":   ("NYSE",   "america"),
 }
 
 # Yahoo Finance tickers (some Canadian tickers need .TO suffix)
@@ -102,6 +138,19 @@ YF_TICKERS = {
     # Quality Stocks
     "JNJ": "JNJ", "PG": "PG", "UNH": "UNH", "COST": "COST",
     "BRK.B": "BRK-B", "AMZN": "AMZN", "GOOGL": "GOOGL", "AVGO": "AVGO",
+    # Oversold Quality
+    "NFLX": "NFLX", "GE": "GE", "MA": "MA", "MCD": "MCD",
+    "HD": "HD", "LOW": "LOW", "MRK": "MRK", "PFE": "PFE",
+    "CRM": "CRM", "NKE": "NKE", "DIS": "DIS",
+    # US Penny Stocks
+    "SOUN": "SOUN", "GENI": "GENI", "RDW": "RDW", "QUBT": "QUBT",
+    "GRAB": "GRAB", "SENS": "SENS", "NTLA": "NTLA", "ACHR": "ACHR",
+    "NXE": "NXE", "LCID": "LCID", "TLRY": "TLRY", "AISP": "AISP",
+    # TSX Penny Stocks
+    "OGI": "OGI.TO", "BTO": "BTO.TO", "URC": "URC.TO", "WELL": "WELL.TO",
+    "DML": "DML.TO", "BIR": "BIR.TO", "GURU": "GURU.TO", "REAL": "REAL.TO",
+    # Watching for Pullback
+    "NOK": "NOK",
 }
 
 # Signals we consider "buy" triggers
