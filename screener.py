@@ -1,19 +1,17 @@
 import yfinance as yf
 import pandas as pd
 import concurrent.futures
-import json
-import urllib.request
+import logging
+import requests
 from bs4 import BeautifulSoup
 
-import requests
-import urllib3
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+logger = logging.getLogger(__name__)
 
 def get_sp500_tickers():
     url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
     headers = {'User-Agent': 'Mozilla/5.0'}
-    response = requests.get(url, headers=headers, verify=False)
+    response = requests.get(url, headers=headers, timeout=15)
     tables = pd.read_html(response.text, flavor='html5lib')
     df = tables[0]
     tickers = df['Symbol'].tolist()
@@ -55,8 +53,8 @@ def analyze_ticker(ticker):
                 'Upside': f"{upside * 100:.1f}%",
                 'Recommendation': recommendation
             }
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Skipping %s: %s", ticker, e)
     return None
 
 def main():
@@ -65,7 +63,7 @@ def main():
     print(f"Found {len(tickers)} tickers. Analyzing...")
     
     results = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         futures = {executor.submit(analyze_ticker, ticker): ticker for ticker in tickers}
         
         for future in concurrent.futures.as_completed(futures):

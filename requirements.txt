@@ -1,5 +1,8 @@
 mcp
 yfinance
 pandas
-fastapi
-uvicorn
+requests
+beautifulsoup4
+html5lib
+mstarpy
+selenium

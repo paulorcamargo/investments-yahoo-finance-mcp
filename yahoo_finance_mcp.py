@@ -111,12 +111,15 @@ async def call_tool(name: str, arguments: dict[str, Any] | None) -> list[types.T
     """Handle tool execution requests."""
     if not arguments:
         return [types.TextContent(type="text", text="Missing arguments")]
-        
+
     ticker = arguments.get("ticker")
     if not ticker:
         return [types.TextContent(type="text", text="Missing required argument 'ticker'")]
 
+    ticker = ticker.strip().upper()
+
     try:
+        result = None
         if name == "get_ticker_info":
             stock = yf.Ticker(ticker)
             info = stock.info
@@ -158,7 +161,7 @@ async def call_tool(name: str, arguments: dict[str, Any] | None) -> list[types.T
 
         elif name == "get_news":
             stock = yf.Ticker(ticker)
-            news = stock.news
+            news = stock.news or []
             result = json.dumps(news, indent=2)
 
         elif name == "get_options_chain":
@@ -203,7 +206,9 @@ async def call_tool(name: str, arguments: dict[str, Any] | None) -> list[types.T
                 
         else:
             return [types.TextContent(type="text", text=f"Unknown tool: {name}")]
-            
+
+        if result is None:
+            result = f"No data returned for {ticker}."
         return [types.TextContent(type="text", text=result)]
         
     except Exception as e:
