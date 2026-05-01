@@ -1,2 +1,5 @@
 __pycache__/
 *.csv
+monitor_state.json
+monitor_log.txt
+~$*.docx
